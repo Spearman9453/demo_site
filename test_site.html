@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncle Ali - אתר בדיקות קיצון (Chaos Test)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; margin: 0; padding-bottom: 100px; }
+        
+        /* עיצוב כללי */
+        header { background: #2c3e50; color: white; padding: 1rem; }
+        main { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1, h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .test-section { margin-bottom: 40px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fff; }
+        .test-section h3 { background: #e9ecef; padding: 10px; margin: -20px -20px 20px -20px; border-radius: 8px 8px 0 0; border-bottom: 1px solid #ddd; }
+        
+        /* אלמנטים לבדיקה */
+        .btn-fake { display: inline-block; padding: 10px 20px; background: #e74c3c; color: white; cursor: pointer; border-radius: 5px; margin: 5px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin: 5px; display: inline-block; }
+        
+        /* אנימציות לבדיקה */
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; }
+        .bouncer { width: 50px; height: 50px; background: orange; animation: bounce 1s infinite alternate; border-radius: 50%; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(50px); } }
+
+        /* תפריט עליון לבדיקת Skip Link */
+        nav ul { display: flex; list-style: none; padding: 0; gap: 10px; }
+        nav a { color: #bdc3c7; text-decoration: none; padding: 5px; }
+        nav a:hover { color: white; }
+
+        /* בדיקת הסתרת תמונות */
+        .bg-image-test { width: 100px; height: 100px; background-image: url('https://via.placeholder.com/100'); background-size: cover; display: inline-block; border: 2px solid red; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div><strong>אתר בדיקות קיצון</strong></div>
+            <nav>
+                <ul>
+                    <li><a href="#">בית</a></li>
+                    <li><a href="#">אודות</a></li>
+                    <li><a href="#">מוצרים</a></li>
+                    <li><a href="#">צור קשר</a></li>
+                    <li><a href="#">תקנון</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p style="font-size: 12px; opacity: 0.8;">השתמש ב-TAB כדי לבדוק את כפתור "דלג לתוכן"</p>
+    </header>
+
+    <main id="main-content">
+        <h1>בדיקות פונקציונליות (V8.2)</h1>
+
+        <div class="test-section">
+            <h3>1. כפתורים וקישורים (הדגשה + מגע + TTS)</h3>
+            <p>נסה את: "הדגשת קישורים", "מצב מגע", "קורא מסך".</p>
+            
+            <div class="box">
+                <strong>א. תקני:</strong><br>
+                <button>כפתור אמיתי (Button)</button>
+                <a href="#">קישור אמיתי (A Href)</a>
+            </div>
+
+            <div class="box">
+                <strong>ב. מזויף (Div/Span):</strong><br>
+                <div class="btn-fake" role="button">אני DIV שמתחזה לכפתור</div>
+                <span style="color:blue; text-decoration:underline; cursor:pointer;">אני SPAN שמתחזה לקישור</span>
+            </div>
+
+            <div class="box">
+                <strong>ג. צפוף (לבדיקת Touch Mode):</strong><br>
+                <button style="padding:2px; font-size:10px;">קטן1</button>
+                <button style="padding:2px; font-size:10px;">קטן2</button>
+                <a href="#" style="font-size:10px;">קישור קטן</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>2. טפסים (הדגשה + הקראה חכמה)</h3>
+            <p>הפעל "קורא מסך" ועבור על השדות. בדוק אם הוא מקריא נכון גם כשאין תווית.</p>
+
+            <div style="margin-bottom: 15px;">
+                <label for="name">שם מלא (עם Label):</label><br>
+                <input type="text" id="name">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>ללא תווית (רק Placeholder):</strong><br>
+                <input type="email" placeholder="הכנס אימייל כאן">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>נגישות נסתרת (Aria-Label):</strong><br>
+                <input type="text" aria-label="מספר טלפון לחירום">
+                <small>(השדה הזה ריק, אבל הקורא צריך להגיד "מספר טלפון לחירום")</small>
+            </div>
+            
+            <textarea placeholder="הודעה (Textarea)"></textarea>
+            <br>
+            <select aria-label="בחר עיר">
+                <option>תל אביב</option>
+                <option>ירושלים</option>
+            </select>
+        </div>
+
+        <div class="test-section">
+            <h3>3. אנימציות ומדיה (כפתור עצור)</h3>
+            <p>לחץ על "עצור אנימציות" - הכל צריך לקפוא, כולל הסאונד.</p>
+            
+            <div style="display:flex; gap: 20px; align-items: center;">
+                <div class="spinner"></div> <div class="bouncer"></div> <audio controls loop>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    הדפדפן שלך לא תומך באודיו.
+                </audio>
+            </div>
+            <p><small>הפעל את המוזיקה ואז לחץ על "עצור אנימציות". המוזיקה צריכה להיעצר.</small></p>
+        </div>
+
+        <div class="test-section">
+            <h3>4. ריבוי שפות (זיהוי קול אוטומטי)</h3>
+            <p>עבור עם העכבר. המבטא צריך להשתנות אוטומטית.</p>
+            <ul>
+                <li lang="he"><strong>עברית:</strong> שלום, אני בודק את קורא המסך.</li>
+                <li lang="en" style="direction: ltr; text-align: left;"><strong>English:</strong> Hello, this is an accessibility test.</li>
+                <li lang="ru" style="direction: ltr; text-align: left;"><strong>Russian:</strong> Привет, как дела? Система работает.</li>
+                <li lang="ar"><strong>Arabic:</strong> مرحبًا، هل تسمعني بوضوح؟</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>5. תמונות וסרגל קריאה</h3>
+            <p>בדוק את "הסתר תמונות" ו"סרגל קריאה".</p>
+            
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <div>
+                    <img src="https://via.placeholder.com/100" alt="תמונה רגילה">
+                    <br><small>תגית IMG</small>
+                </div>
+                <div>
+                    <div class="bg-image-test"></div>
+                    <br><small>רקע CSS</small>
+                </div>
+                <div>
+                    <svg width="100" height="100"><circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /></svg>
+                    <br><small>קובץ SVG</small>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; line-height: 1.8;">
+                טקסט ארוך לבדיקת סרגל הקריאה: לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף דוראק ותמרוס. 
+                נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוורא. ווהאל מחמט, נצ בו מאמט.
+            </p>
+        </div>
+
+        <div class="test-section">
+            <h3>6. מבנה כותרות (בדוק את "מפת האתר")</h3>
+            <h4>כותרת משנה H4</h4>
+            <h5>כותרת קטנה H5</h5>
+            <p>לחץ על "מפת אתר" בתפריט הנגישות. אתה אמור לראות את כל הכותרות בדף מסודרות לפי היררכיה.</p>
+        </div>
+
+    </main>
+
+    <script src="loader.js"></script>
+
+</body>
+</html>
