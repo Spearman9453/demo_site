@@ -2,165 +2,88 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>גישה שווה - Accessibility Demo Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>גישה שווה - מעבדת בדיקות קיצון</title>
     <style>
         :root {
-            --primary-blue: #1e3a8a;
-            --accent-orange: #f97316;
-            --bg-gray: #f8fafc;
-            --text-dark: #1e293b;
-            --card-white: #ffffff;
+            --primary: #1e3a8a;
+            --accent: #f97316;
+            --bg: #f0f2f5;
         }
 
         body {
-            font-family: 'Assistant', 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg-gray);
-            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: #333;
             margin: 0;
-            line-height: 1.6;
+            padding-bottom: 100px;
         }
 
-        /* Header מודרני וממותג */
+        /* Header עיצוב */
         header {
-            background: var(--card-white);
-            padding: 1.5rem 5%;
+            background: white;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area img { height: 100px; width: auto; border-radius: 8px; }
+        .logo-title { font-size: 24px; font-weight: 800; color: var(--primary); }
 
-        /* הגדרות הלוגו המוגדל */
-        .logo-area img {
-            height: 120px; /* גודל מוגדל וברור */
-            width: auto;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-area img:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-text-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-            line-height: 1;
-            margin: 0;
-        }
-
-        .logo-tagline {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--accent-orange);
-            margin-top: 5px;
-        }
-
-        nav ul { display: flex; list-style: none; gap: 25px; margin: 0; }
-        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
-        nav a:hover { color: var(--accent-orange); }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 100%);
+            background: var(--primary);
             color: white;
-            padding: 80px 5%;
+            padding: 40px 5%;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .hero h1 { font-size: 2.8rem; margin: 0; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; margin-top: 15px; }
+        main { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        main { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
-
-        /* גריד של בדיקות */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-
+        /* Sections */
         .test-section {
-            background: var(--card-white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-            border-top: 6px solid var(--accent-orange);
-            transition: all 0.3s ease;
-        }
-
-        .test-section:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-right: 6px solid var(--accent);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .test-section h3 {
+            color: var(--primary);
             margin-top: 0;
-            color: var(--primary-blue);
-            font-size: 1.5rem;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
 
-        /* אלמנטים אינטראקטיביים */
-        .interactive-box {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border: 1px dashed #cbd5e1;
-        }
+        /* אלמנטים של Chaos Test */
+        .btn-fake { display: inline-block; padding: 10px 20px; background: #e74c3c; color: white; cursor: pointer; border-radius: 5px; margin: 5px; font-weight: bold; }
+        .box { padding: 15px; border: 1px solid #ccc; margin: 10px 0; display: inline-block; border-radius: 8px; width: 100%; box-sizing: border-box; }
 
-        .btn-fake {
+        /* אנימציות */
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; }
+        .bouncer { width: 50px; height: 50px; background: var(--accent); animation: bounce 1s infinite alternate; border-radius: 50%; }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(30px); } }
+
+        /* בדיקת תמונות */
+        .bg-image-test {
+            width: 100px;
+            height: 100px;
+            background-image: url('logo.png');
+            background-size: cover;
             display: inline-block;
-            padding: 12px 24px;
-            background: #64748b;
-            color: white;
-            cursor: pointer;
-            border-radius: 8px;
-            margin: 5px 0;
-            font-weight: bold;
-            text-align: center;
+            border: 2px solid red;
         }
 
-        .real-button {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: inherit;
-        }
-
-        input, select, textarea {
-            width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 8px; box-sizing: border-box;
-            font-family: inherit;
-        }
-
-        /* אנימציות לבדיקה */
-        .spinner { width: 45px; height: 45px; border: 5px solid #f1f5f9; border-top: 5px solid var(--accent-orange); border-radius: 50%; animation: spin 1s linear infinite; }
-        .pulse-box { width: 45px; height: 45px; background: var(--accent-orange); border-radius: 8px; animation: pulse 1.5s infinite; }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 70% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.8; } }
-
-        footer { text-align: center; padding: 60px; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 50px; }
+        nav a { color: var(--primary); text-decoration: none; font-weight: bold; margin: 0 10px; }
     </style>
 </head>
 <body>
@@ -168,65 +91,104 @@
     <header>
         <div class="logo-area">
             <img src="logo.png" alt="לוגו גישה שווה">
-            <div class="logo-text-container">
-                <h2 class="logo-text">גישה שווה</h2>
-                <span class="logo-tagline">טכנולוגיה בשירות הקהילה</span>
-            </div>
+            <div class="logo-title">גישה שווה</div>
         </div>
         <nav>
-            <ul>
-                <li><a href="#">דף הבית</a></li>
-                <li><a href="#">הטכנולוגיה שלנו</a></li>
-                <li><a href="#">לקוחות</a></li>
-            </ul>
+            <a href="#">דף הבית</a>
+            <a href="#">אודות</a>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>סביבת בדיקות נגישות Chaos Lab</h1>
-        <p>מערכת אימות רישיונות וניטור נגישות בזמן אמת עבור לקוחות "גישה שווה"</p>
+        <h1>מעבדת בדיקות קיצון (Chaos Lab)</h1>
+        <p>בדיקת תאימות טכנולוגית עבור תוסף הנגישות של "גישה שווה"</p>
     </div>
 
-    <main>
-        <div class="grid">
-            <section class="test-section">
-                <h3>1. זיהוי רכיבים חכם</h3>
-                <p>בדיקה האם התוסף מזהה אלמנטים שאינם נגישים לפי התקן הישראלי.</p>
-                <div class="interactive-box">
-                    <div class="btn-fake" role="button">כפתור DIV (לא תקני)</div>
-                    <button class="real-button">כפתור Button (תקני)</button>
-                </div>
-            </section>
+    <main id="main-content">
 
-            <section class="test-section">
-                <h3>2. טפסים וחווית משתמש</h3>
-                <p>בדיקת נגישות קורא מסך עבור שדות קלט ללא תוויות (Labels).</p>
-                <div class="interactive-box">
-                    <input type="email" placeholder="הכנס אימייל (Placeholder בלבד)">
-                    <input type="text" aria-label="חיפוש מהיר באתר" placeholder="שדה עם Aria-Label">
-                </div>
-            </section>
-
-            <section class="test-section">
-                <h3>3. שליטה במדיה ואנימציה</h3>
-                <p>בדיקת פונקציית "עצור אנימציות" להקלה על משתמשים עם הפרעות קשב או אפילפסיה.</p>
-                <div style="display:flex; justify-content: space-around; padding: 25px 0;">
-                    <div class="spinner"></div>
-                    <div class="pulse-box"></div>
-                </div>
-            </section>
-
-            <section class="test-section">
-                <h3>4. נראות והתאמה אישית</h3>
-                <p>בדיקת שינויי צבעים, ניגודיות גבוהה והסתרת תמונות רקע.</p>
-                <img src="logo.png" alt="לוגו גישה שווה לבדיקת נגישות" style="border-radius: 10px; width: 100%; max-height: 200px; object-fit: contain; background: #eee;">
-            </section>
+        <div class="test-section">
+            <h3>1. כפתורים וקישורים (הדגשה + מגע)</h3>
+            <p>בדיקת זיהוי אלמנטים אינטראקטיביים שאינם תקניים:</p>
+            <div class="box">
+                <button>כפתור תקני (Button)</button>
+                <div class="btn-fake" role="button">אני DIV שמתחזה לכפתור</div>
+                <span style="color:blue; text-decoration:underline; cursor:pointer; margin-left:15px;">אני SPAN שמתחזה לקישור</span>
+            </div>
+            <div class="box">
+                <strong>בדיקת Touch Mode (אלמנטים קטנים וצפופים):</strong><br><br>
+                <button style="padding:2px; font-size:10px;">קטן 1</button>
+                <button style="padding:2px; font-size:10px;">קטן 2</button>
+                <button style="padding:2px; font-size:10px;">קטן 3</button>
+            </div>
         </div>
-    </main>
 
-    <footer>
-        &copy; 2026 גישה שווה (Equal Access) | פתרונות נגישות חכמים לאתרי אינטרנט.
-    </footer>
+        <div class="test-section">
+            <h3>2. טפסים והקראה חכמה (TTS)</h3>
+            <p>בדיקה האם קורא המסך מזהה שדות ללא תווית פיזית:</p>
+            <div style="margin-bottom: 15px;">
+                <label for="full-name">שם מלא (עם Label):</label><br>
+                <input type="text" id="full-name">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>ללא תווית (רק Placeholder):</strong><br>
+                <input type="email" placeholder="הכנס אימייל כאן">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>נגישות נסתרת (Aria-Label):</strong><br>
+                <input type="text" aria-label="מספר טלפון לחירום" placeholder="שדה עם תווית נסתרת">
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>3. אנימציות ומדיה (בדיקת עצירה)</h3>
+            <p>הפעל את האנימציות והמוזיקה, ואז נסה את כפתור "עצור אנימציות":</p>
+            <div style="display:flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+                <div class="spinner"></div>
+                <div class="bouncer"></div>
+                <audio controls loop>
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    הדפדפן שלך לא תומך באודיו.
+                </audio>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>4. ריבוי שפות (זיהוי מבטא)</h3>
+            <p>מעבר עכבר צריך לשנות את שפת ההקראה אוטומטית:</p>
+            <ul>
+                <li lang="he"><strong>עברית:</strong> שלום, אני בודק את קורא המסך של גישה שווה.</li>
+                <li lang="en" style="direction: ltr; text-align: left;"><strong>English:</strong> Hello, this is an automated accessibility test.</li>
+                <li lang="ru" style="direction: ltr; text-align: left;"><strong>Russian:</strong> Привет, система работает корректно.</li>
+                <li lang="ar"><strong>Arabic:</strong> مرحبًا، האם המבטא משתנה לערבית?</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>5. תמונות, סמלים ומבנה</h3>
+            <p>בדיקת "הסתר תמונות" ו"מפת אתר":</p>
+            <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
+                <div>
+                    <img src="logo.png" alt="לוגו גישה שווה" width="100">
+                    <br><small>תגית IMG</small>
+                </div>
+                <div>
+                    <div class="bg-image-test"></div>
+                    <br><small>רקע CSS</small>
+                </div>
+                <div>
+                    <svg width="100" height="100"><circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /></svg>
+                    <br><small>קובץ SVG</small>
+                </div>
+            </div>
+            <h4>כותרת ברמה H4</h4>
+            <h5>כותרת ברמה H5</h5>
+            <p style="line-height: 1.8;">
+                טקסט ארוך לבדיקת סרגל קריאה ושינוי גופנים: לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית.
+                מערכת גישה שווה נועדה להבטיח שכל משתמש, ללא קשר למגבלה, יוכל לגלוש בצורה חלקה.
+            </p>
+        </div>
+
+    </main>
 
     <script
         src="loader.js"
