@@ -18,7 +18,7 @@
         if (data && data.valid) {
             // הזרקת הווידג'ט המלא רק אחרי אישור
             const widgetScript = document.createElement('script');
-            widgetScript.src = "https://cdn.aliaccess.com/widget-v1.js"; // הקובץ הכבד
+            widgetScript.src = "https://spearman9453.github.io/demo_site/bundle.js";
             widgetScript.async = true;
 
             // העברת הגדרות מהשרת ללוח הבקרה של התוסף
