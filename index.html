@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uncle Ali - Accessibility Demo Lab</title>
+    <title>גישה שווה - Accessibility Demo Lab</title>
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -21,143 +21,211 @@
             line-height: 1.6;
         }
 
-        /* Header מודרני */
+        /* Header מודרני וממותג */
         header {
             background: var(--card-white);
-            padding: 1rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        /* עדכון ספציפי לאזור הלוגו */
-.logo-area img {
-    height: 100px; /* הגדלתי מ-50 ל-100 */
-    width: auto;   /* שומר על פרופורציות */
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-/* אפקט קטן כשמרחפים על הלוגו */
-.logo-area img:hover {
-    transform: scale(1.05);
-}
+        /* הגדרות הלוגו המוגדל */
+        .logo-area img {
+            height: 120px; /* גודל מוגדל וברור */
+            width: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
 
-.logo-text {
-    font-size: 2rem; /* הגדלתי מ-1.5 ל-2 */
-    font-weight: 800;
-    color: var(--primary-blue);
-    letter-spacing: -1px;
-}
+        .logo-area img:hover {
+            transform: scale(1.05);
+        }
 
-        nav ul { display: flex; list-style: none; gap: 20px; margin: 0; }
-        nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin: 0;
+        }
+
+        .logo-tagline {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--accent-orange);
+            margin-top: 5px;
+        }
+
+        nav ul { display: flex; list-style: none; gap: 25px; margin: 0; }
+        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
         nav a:hover { color: var(--accent-orange); }
 
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 100%);
             color: white;
-            padding: 60px 5%;
+            padding: 80px 5%;
             text-align: center;
             margin-bottom: 40px;
         }
 
-        main { max-width: 1100px; margin: 0 auto; padding: 0 20px 100px; }
+        .hero h1 { font-size: 2.8rem; margin: 0; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-top: 15px; }
 
-        /* כרטיסיות בדיקה */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        main { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
+
+        /* גריד של בדיקות */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+
         .test-section {
             background: var(--card-white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--accent-orange);
-            transition: transform 0.3s ease;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--accent-orange);
+            transition: all 0.3s ease;
         }
-        .test-section:hover { transform: translateY(-5px); }
-        .test-section h3 { margin-top: 0; color: var(--primary-blue); border-bottom: 1px solid #eee; padding-bottom: 10px; }
 
-        /* אלמנטים פנימיים */
-        .btn-fake { display: inline-block; padding: 12px 24px; background: #94a3b8; color: white; cursor: pointer; border-radius: 6px; margin: 5px 0; font-weight: bold; }
-        .interactive-box { background: #f1f5f9; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .test-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+        }
+
+        .test-section h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* אלמנטים אינטראקטיביים */
+        .interactive-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .btn-fake {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #64748b;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 5px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .real-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
 
         input, select, textarea {
-            width: 100%; padding: 10px; margin-top: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;
+            width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 8px; box-sizing: border-box;
+            font-family: inherit;
         }
 
-        /* אנימציות */
-        .spinner { width: 40px; height: 40px; border: 4px solid #e2e8f0; border-top: 4px solid var(--accent-orange); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        /* אנימציות לבדיקה */
+        .spinner { width: 45px; height: 45px; border: 5px solid #f1f5f9; border-top: 5px solid var(--accent-orange); border-radius: 50%; animation: spin 1s linear infinite; }
+        .pulse-box { width: 45px; height: 45px; background: var(--accent-orange); border-radius: 8px; animation: pulse 1.5s infinite; }
 
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 70% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.8; } }
+
+        footer { text-align: center; padding: 60px; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-area">
-            <img src="logo.png" alt="Uncle Ali Logo">
-            <div class="logo-text">Uncle Ali <span style="font-weight: 300; font-size: 1rem;">Lab</span></div>
+            <img src="logo.png" alt="לוגו גישה שווה">
+            <div class="logo-text-container">
+                <h2 class="logo-text">גישה שווה</h2>
+                <span class="logo-tagline">טכנולוגיה בשירות הקהילה</span>
+            </div>
         </div>
         <nav>
             <ul>
                 <li><a href="#">דף הבית</a></li>
-                <li><a href="#">טכנולוגיה</a></li>
+                <li><a href="#">הטכנולוגיה שלנו</a></li>
                 <li><a href="#">לקוחות</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>סביבת בדיקות נגישות</h1>
-        <p>כאן אנחנו בודקים את גבולות היכולת של התוסף מול אלמנטים מורכבים</p>
+        <h1>סביבת בדיקות נגישות Chaos Lab</h1>
+        <p>מערכת אימות רישיונות וניטור נגישות בזמן אמת עבור לקוחות "גישה שווה"</p>
     </div>
 
     <main>
         <div class="grid">
             <section class="test-section">
-                <h3>1. זיהוי אלמנטים חכם</h3>
-                <p>בדיקת היכולת של Uncle Ali לזהות כפתורים שאינם תקניים.</p>
+                <h3>1. זיהוי רכיבים חכם</h3>
+                <p>בדיקה האם התוסף מזהה אלמנטים שאינם נגישים לפי התקן הישראלי.</p>
                 <div class="interactive-box">
                     <div class="btn-fake" role="button">כפתור DIV (לא תקני)</div>
-                    <button style="background: var(--primary-blue); color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer;">כפתור Button (תקני)</button>
+                    <button class="real-button">כפתור Button (תקני)</button>
                 </div>
             </section>
 
             <section class="test-section">
                 <h3>2. טפסים וחווית משתמש</h3>
-                <p>בדיקת הקראה של שדות ללא Label פיזי.</p>
+                <p>בדיקת נגישות קורא מסך עבור שדות קלט ללא תוויות (Labels).</p>
                 <div class="interactive-box">
                     <input type="email" placeholder="הכנס אימייל (Placeholder בלבד)">
-                    <input type="text" aria-label="חיפוש מהיר" placeholder="חיפוש (Aria-Label)">
+                    <input type="text" aria-label="חיפוש מהיר באתר" placeholder="שדה עם Aria-Label">
                 </div>
             </section>
 
             <section class="test-section">
-                <h3>3. בקרה על מדיה</h3>
-                <p>בדיקת פונקציית "עצירת אנימציות" על אלמנטים דינמיים.</p>
-                <div style="display:flex; justify-content: space-around; padding: 20px 0;">
+                <h3>3. שליטה במדיה ואנימציה</h3>
+                <p>בדיקת פונקציית "עצור אנימציות" להקלה על משתמשים עם הפרעות קשב או אפילפסיה.</p>
+                <div style="display:flex; justify-content: space-around; padding: 25px 0;">
                     <div class="spinner"></div>
-                    <div style="width: 40px; height: 40px; background: var(--accent-orange); border-radius: 4px; animation: pulse 1.5s infinite;"></div>
+                    <div class="pulse-box"></div>
                 </div>
             </section>
 
             <section class="test-section">
-                <h3>4. נגישות ויזואלית</h3>
-                <p>בדיקת מצבי ניגודיות, הגדלת טקסט והסתרת תמונות.</p>
-                <img src="logo.png" alt="תיאור תמונה לבדיקת alt" style="border-radius: 8px; width: 100%;">
+                <h3>4. נראות והתאמה אישית</h3>
+                <p>בדיקת שינויי צבעים, ניגודיות גבוהה והסתרת תמונות רקע.</p>
+                <img src="logo.png" alt="לוגו גישה שווה לבדיקת נגישות" style="border-radius: 10px; width: 100%; max-height: 200px; object-fit: contain; background: #eee;">
             </section>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Uncle Ali AI Systems - נבנה עבור עסק לבנייה ומכירה של אתרים נגישים.
+        &copy; 2026 גישה שווה (Equal Access) | פתרונות נגישות חכמים לאתרי אינטרנט.
     </footer>
 
     <script
