@@ -9,7 +9,7 @@
     }
 
     // 2. כתובת השרת שלך (ב-Production זה יהיה ה-URL של Render)
-    const API_URL = "https://ali-access-api.onrender.com/api/validate/";
+    const API_URL = "https:///meydan.pythonanywhere.com/api/validate";
 
     // 3. פנייה לשרת לאימות
     fetch(`${API_URL}?key=${LICENSE_KEY}`)
