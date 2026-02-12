@@ -34,9 +34,26 @@
             z-index: 100;
         }
 
-        .logo-area { display: flex; align-items: center; gap: 15px; }
-        .logo-area img { height: 50px; border-radius: 8px; }
-        .logo-text { font-size: 1.5rem; font-weight: 800; color: var(--primary-blue); }
+        /* עדכון ספציפי לאזור הלוגו */
+.logo-area img {
+    height: 100px; /* הגדלתי מ-50 ל-100 */
+    width: auto;   /* שומר על פרופורציות */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* אפקט קטן כשמרחפים על הלוגו */
+.logo-area img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    font-size: 2rem; /* הגדלתי מ-1.5 ל-2 */
+    font-weight: 800;
+    color: var(--primary-blue);
+    letter-spacing: -1px;
+}
 
         nav ul { display: flex; list-style: none; gap: 20px; margin: 0; }
         nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
@@ -86,7 +103,7 @@
     <header>
         <div class="logo-area">
             <img src="logo.png" alt="Uncle Ali Logo">
-            <div class="logo-text">Uncle Ali <span style="font-weight: 300; font-size: 0.9rem;">Lab</span></div>
+            <div class="logo-text">Uncle Ali <span style="font-weight: 300; font-size: 1rem;">Lab</span></div>
         </div>
         <nav>
             <ul>
